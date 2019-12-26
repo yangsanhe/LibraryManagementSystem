@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加图书类型信息</title>
+    <link rel="stylesheet" href="./layui/css/layui.css">
+</head>
+<body>
+<form class="layui-form" action="#" lay-filter="example" id="add-booktype-form">
+    <div class="layui-form-item">
+        <div>
+            <div class="layui-inline">
+                <label class="layui-form-label">类型名称：</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="typename" required lay-verify="required" placeholder="请输入类型名称"
+                           autocomplete="off" class="layui-input"  id="typename">
+                </div>
+            </div>
+
+            <div class="layui-inline">
+                <label class="layui-form-label">可借天数：</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="borrowDays" required lay-verify="required" placeholder="请输入可借天数(天)"
+                           autocomplete="off" class="layui-input" id="borrowDays" >
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</form>
+<script src="./layui/layui.js"></script>
+<script>
+    layui.use('form', function(){
+        var form = layui.form;
+        form.render();
+    });
+</script>
+
+</body>
+</html>

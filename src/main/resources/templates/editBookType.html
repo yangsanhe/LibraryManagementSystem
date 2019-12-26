@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>修改图书类型</title>
+    <link rel="stylesheet" href="./layui/css/layui.css">
+</head>
+<body>
+<form class="layui-form" action="#" lay-filter="example" id="edit-bookType-form">   <!-- 将来改action就行了-->
+    <div class="layui-form-item">
+        <div>
+            <div class="layui-inline">
+                <label class="layui-form-label">类型名称：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="typename" required lay-verify="required" placeholder="请输入类型名称"
+                           autocomplete="off" class="layui-input"  id="typename">
+                </div>
+            </div>
+
+            <div class="layui-inline">
+                <label class="layui-form-label">可借天数：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="borrowingDays" required lay-verify="required" placeholder="请输入可借天数(天)"
+                           autocomplete="off" class="layui-input" id="borrowingDays" >
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</form>
+
+</body>
+</html>

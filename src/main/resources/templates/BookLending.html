@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图书借阅</title>
+    <link rel="stylesheet" href="./layui/css/layui.css">
+</head>
+<body>
+<div class='panel-1' id='readerCheck'>
+    <div class="layui-fluid">
+        <div class="layui-card">
+            <div class="layui-form">
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">读者条形码:</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="barcode" placeholder="请输入读者条形码" autocomplete="off"
+                                   class="layui-input" id="barcode">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <button class="layui-btn" lay-submit lay-filter="LAY-user-front-search" id="searchreaderbtn">
+                            <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form">
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">姓名:</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="readerName"id="readerName" required  lay-verify="required" placeholder="请输入读者姓名" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">性别:</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="sex" id="sex" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">读者类型:</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="readerType" id="readerType" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">有效证件:</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="IDType" id="IDType" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">证件号码:</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="IDNumber" id="IDNumber"  lay-verify="required" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">可借数量:</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="borrownumber" id="borrownumber"  lay-verify="required" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form">
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">添加的依据:</label>
+                    </div>
+                    <div class="layui-inline">
+                        <input type="radio" name="basis" value="图书条形码" title="图书条形码" checked>
+                        <input type="radio" name="basis" value="图书名称" title="图书名称">
+                    </div>
+                    <div class="layui-inline">
+                        <div class="layui-input-inline">
+                            <input type="text" name="content" autocomplete="off" class="layui-input" id="content">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <div class="layui-input-inline">
+                            <button class="layui-btn" lay-submit lay-filter="LAY-user-front-search" id="searchbookbtn">
+                                <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <table class="layui-table" id="borrowTable" lay-filter="borrowBook"></table>
+        </div>
+    </div>
+</div>
+</body>
+<script src="./layui/layui.js"></script>
+<script src="./js/BookLending.js"></script>
+</html>

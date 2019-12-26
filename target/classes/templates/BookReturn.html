@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图书归还</title>
+    <link rel="stylesheet" href="./layui/css/layui.css">
+    <script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+<div class='panel-1' id='readerCheck'>
+    <div class="layui-fluid">
+        <div class="layui-card">
+            <div class="layui-form layui-card-header layuiadmin-card-header-auto" style="height: auto;">
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">读者条形码:</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="barcode" placeholder="请输入读者条形码" autocomplete="off"
+                                   class="layui-input" id="barcode">
+                        </div>
+                    </div>
+
+                    <div class="layui-inline">
+                        <button class="layui-btn layuiadmin-btn-useradmin" lay-submit=""
+                                lay-filter="LAY-user-front-search" data-type="reload" id="searchreaderbtn">
+                            <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form layui-card-header layuiadmin-card-header-auto" style="height: auto;">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">姓名：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="readerName"id="readerName" required  lay-verify="required" placeholder="请输入读者姓名" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">性别：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="sex" id="sex" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">读者类型：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="readerType" id="readerType" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">有效证件：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="IDType" id="IDType" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">证件号码：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="IDNumber" id="IDNumber"  lay-verify="required" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">可借数量：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="borrownumber" id="borrownumber"  lay-verify="required" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+            <table class="layui-table" id="returnTable" lay-filter="returnBook"></table>
+        </div>
+    </div>
+</div>
+</body>
+<script src="./layui/layui.js"></script>
+<script src="./js/BookReturning.js"></script>
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-xs" lay-event="return">归还</a>
+</script>
+</html>

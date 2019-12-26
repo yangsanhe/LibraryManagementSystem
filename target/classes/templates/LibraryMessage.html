@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图书馆信息</title>
+    <link rel="stylesheet" href="./layui/css/layui.css">
+</head>
+<body>
+<div class='panel-1' id='addlibrarymessage'>
+    <form class="layui-form" id="add-library-form">
+        <div class="layui-form-item">
+            <label class="layui-form-label" style="width: 100px;">图书馆名称：</label>
+            <div class="layui-input-inline">
+                <input type="text" name="libraryName" id="libraryName" required  lay-verify="required" placeholder="请输入图书馆名称" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label" style="width: 100px;">馆长：</label>
+            <div class="layui-input-inline">
+                <input type="text" name="curator" id="curator" required  lay-verify="required" placeholder="请输入馆长姓名" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label" style="width: 100px;">联系电话：</label>
+            <div class="layui-input-inline">
+                <input type="text" name="phone"id="phone" required  lay-verify="required" placeholder="请输入联系电话" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label" style="width: 100px;">联系地址：</label>
+            <div class="layui-input-inline">
+                <input type="text" name="address"id="address" required  lay-verify="required" placeholder="请输入联系地址" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label" style="width: 100px;">邮箱：</label>
+            <div class="layui-input-inline">
+                <input type="text" name="mailbox" id="mailbox" required  lay-verify="required" placeholder="请输入邮箱" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label" style="width: 100px;">图书馆网址：</label>
+            <div class="layui-input-inline">
+                <input type="text" name="website"id="website" required  lay-verify="required" placeholder="请输入图书馆网址" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label" style="width: 100px;">建馆时间：</label>
+            <div class="layui-input-inline">
+                <input type="text" name="buildingTime" class="layui-input" id="buildingTime" placeholder="请选择建馆时间">
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label" style="width: 100px;">图书馆简介：</label>
+            <div class="layui-input-block">
+                <textarea name="briefIntroduction" id="briefIntroduction" placeholder="请输入内容" class="layui-textarea" style="width: 500px;"></textarea>
+            </div>
+        </div>
+        <div class="layui-form-item" style="width: 564.4px;">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit="" lay-filter="test">立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary" id="return">重置</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
+<script src="./layui/layui.js"></script>
+<script>
+    layui.use('form', function(){
+        var form = layui.form;
+        layer.config({
+            offset: ['200px', '50px']
+        });
+        //监听提交
+        form.on('submit(test)', function(data){
+            $.ajax({
+                type:"POST",
+                url:"#",
+                data:$("#add-library-form").serialize(),
+                success:function(){
+                    layer.msg('提交成功', {icon: 6,time: 1500});
+                }
+            });
+            return false;
+        });
+    });
+</script>
+<script>
+    layui.use(['laydate','form'], function(){
+        var laydate = layui.laydate;
+        var form = layui.form;
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#buildingTime' //指定元素
+        });
+    });
+</script>
+</body>
+</html>

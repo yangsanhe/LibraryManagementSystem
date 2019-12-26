@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加书架信息</title>
+    <link rel="stylesheet" href="./layui/css/layui.css">
+</head>
+<body>
+<form class="layui-form" action="#" lay-filter="example" id="add-bookshelf-form">   <!-- 将来改action就行了-->
+    <div class="layui-form-item">
+        <div>
+            <div class="layui-inline">
+                <label class="layui-form-label">书架名称：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="bookshelfName" required lay-verify="required" placeholder="请输入书架名称"
+                           autocomplete="off" class="layui-input"  id="bookshelfName">
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</form>
+<script src="./layui/layui.js"></script>
+<script>
+    layui.use('form', function(){
+        var form = layui.form;
+        form.render();
+    });
+</script>
+</body>
+</html>

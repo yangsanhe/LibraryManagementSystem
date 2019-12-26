@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>修改读者信息</title>
+    <link rel="stylesheet" href="./layui/css/layui.css">
+</head>
+<body>
+<form class="layui-form" action="" id="edit-reader-form">
+    <div class="layui-form-item">
+        <label class="layui-form-label">姓名：</label>
+        <div class="layui-input-inline">
+            <input type="text" name="readerName"id="readerName" required  lay-verify="required" placeholder="请输入读者姓名" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">性别：</label>
+        <div class="layui-input-inline">
+            <input type="radio" name="sex" value="男" title="男" checked id="sex">
+            <input type="radio" name="sex" value="女" title="女">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">条形码：</label>
+        <div class="layui-input-inline">
+            <input type="text" name="barcode" id="barcode" required lay-verify="required" placeholder="请生成条形码" autocomplete="off" class="layui-input" readonly>
+        </div>
+        <div class="layui-form-mid layui-word-aux">*</div>
+    </div>
+    <div class="layui-form-item" lay-filter="readerType">
+        <label class="layui-form-label">读者类型：</label>
+        <div class="layui-input-inline">
+            <select name="readerType" lay-verify="required" id="readerType">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">职业：</label>
+        <div class="layui-input-inline">
+            <input type="text" name="job" id="job" required  lay-verify="required" placeholder="请输入读者职业" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">出生日期：</label>
+        <div class="layui-input-inline">
+            <input type="text" name="birthday" class="layui-input" id="birthday">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">有效证件：</label>
+        <div class="layui-input-inline">
+            <select name="IDType" lay-verify="required" id="IDType">
+                <option value=""></option>
+                <option value="0">身份证</option>
+                <option value="1">工作证</option>
+                <option value="2">学生证</option>
+                <option value="3">其他</option>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">证件号码：</label>
+        <div class="layui-input-inline">
+            <input type="text" name="IDNumber" id="IDNumber" required lay-verify="required" placeholder="请输入证件号码" autocomplete="off" class="layui-input">
+        </div>
+        <div class="layui-form-mid layui-word-aux">*</div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">电话：</label>
+        <div class="layui-input-inline">
+            <input type="text" name="telephone" id="telephone" placeholder="请输入电话号码" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">Email：</label>
+        <div class="layui-input-inline">
+            <input type="text" name="email" id="email" placeholder="请输入邮箱" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">备注：</label>
+        <div class="layui-input-block">
+            <textarea name="desc" id="desc" placeholder="请输入内容" class="layui-textarea"></textarea>
+        </div>
+    </div>
+</form>
+
+<script src="./layui/layui.js"></script>
+<script>
+    layui.use(['laydate','form','jquery'], function(){
+        var laydate = layui.laydate;
+        var form = layui.form;
+        var $ = layui.jquery;
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#birthday' //指定元素
+        });
+        //渲染读者类型
+        var readerTypes = ["VIP","普通读者","超级会员"];
+        for (var i=0;i<readerTypes.length;i++){
+            $("#readerType").append('<option value="'+i+'">'+readerTypes[i]+'</option>');
+        }
+        form.render('select');
+    });
+</script>
+
+</body>
+</html>
