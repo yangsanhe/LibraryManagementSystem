@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yangsanhe.library.dao.PurviewMapper">
+  <resultMap id="BaseResultMap" type="com.yangsanhe.library.entity.Purview">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="systemSet" jdbcType="INTEGER" property="systemset" />
+    <result column="readersManage" jdbcType="INTEGER" property="readersmanage" />
+    <result column="vbooksManage" jdbcType="INTEGER" property="vbooksmanage" />
+    <result column="borrowingBooks" jdbcType="INTEGER" property="borrowingbooks" />
+    <result column="systemQuery" jdbcType="INTEGER" property="systemquery" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, systemSet, readersManage, vbooksManage, borrowingBooks, systemQuery
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from purview
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from purview
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yangsanhe.library.entity.Purview">
+    insert into purview (id, systemSet, readersManage, 
+      vbooksManage, borrowingBooks, systemQuery
+      )
+    values (#{id,jdbcType=INTEGER}, #{systemset,jdbcType=INTEGER}, #{readersmanage,jdbcType=INTEGER}, 
+      #{vbooksmanage,jdbcType=INTEGER}, #{borrowingbooks,jdbcType=INTEGER}, #{systemquery,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yangsanhe.library.entity.Purview">
+    insert into purview
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="systemset != null">
+        systemSet,
+      </if>
+      <if test="readersmanage != null">
+        readersManage,
+      </if>
+      <if test="vbooksmanage != null">
+        vbooksManage,
+      </if>
+      <if test="borrowingbooks != null">
+        borrowingBooks,
+      </if>
+      <if test="systemquery != null">
+        systemQuery,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="systemset != null">
+        #{systemset,jdbcType=INTEGER},
+      </if>
+      <if test="readersmanage != null">
+        #{readersmanage,jdbcType=INTEGER},
+      </if>
+      <if test="vbooksmanage != null">
+        #{vbooksmanage,jdbcType=INTEGER},
+      </if>
+      <if test="borrowingbooks != null">
+        #{borrowingbooks,jdbcType=INTEGER},
+      </if>
+      <if test="systemquery != null">
+        #{systemquery,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yangsanhe.library.entity.Purview">
+    update purview
+    <set>
+      <if test="systemset != null">
+        systemSet = #{systemset,jdbcType=INTEGER},
+      </if>
+      <if test="readersmanage != null">
+        readersManage = #{readersmanage,jdbcType=INTEGER},
+      </if>
+      <if test="vbooksmanage != null">
+        vbooksManage = #{vbooksmanage,jdbcType=INTEGER},
+      </if>
+      <if test="borrowingbooks != null">
+        borrowingBooks = #{borrowingbooks,jdbcType=INTEGER},
+      </if>
+      <if test="systemquery != null">
+        systemQuery = #{systemquery,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yangsanhe.library.entity.Purview">
+    update purview
+    set systemSet = #{systemset,jdbcType=INTEGER},
+      readersManage = #{readersmanage,jdbcType=INTEGER},
+      vbooksManage = #{vbooksmanage,jdbcType=INTEGER},
+      borrowingBooks = #{borrowingbooks,jdbcType=INTEGER},
+      systemQuery = #{systemquery,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

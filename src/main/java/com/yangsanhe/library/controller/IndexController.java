@@ -10,8 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class IndexController {
+
     @RequestMapping("/{pageName}")
-    public String innnerPage(@PathVariable String pageName){
+    public String innerPage(@PathVariable String pageName){
         return pageName;
     }
 

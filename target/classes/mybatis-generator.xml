@@ -19,7 +19,7 @@
         <jdbcConnection connectionURL="jdbc:mysql://localhost:3306/library?useSSL=false"
                         driverClass="com.mysql.jdbc.Driver" userId="root" password="123456"  />
         <!-- 生成实体类地址 -->
-        <javaModelGenerator targetPackage="com.yangsanhe.library.bean"
+        <javaModelGenerator targetPackage="com.yangsanhe.library.entity"
                             targetProject="src/main/java" >
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
@@ -38,7 +38,63 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
+        <table tableName="admin" domainObjectName="Admin"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false"
+        />
         <table tableName="book" domainObjectName="Book"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false"
+        />
+        <table tableName="bookType" domainObjectName="BookType"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false"
+        />
+        <table tableName="bookshelf" domainObjectName="Bookshelf"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false"
+        />
+        <table tableName="library" domainObjectName="Library"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false"
+        />
+        <table tableName="purview" domainObjectName="Purview"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false"
+        />
+        <table tableName="reader" domainObjectName="Reader"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false"
+        />
+        <table tableName="readerType" domainObjectName="ReaderType"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false"
+        />
+        <table tableName="record" domainObjectName="Record"
                enableCountByExample="false"
                enableUpdateByExample="false"
                enableDeleteByExample="false"
