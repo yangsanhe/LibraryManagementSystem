@@ -30,4 +30,5 @@ public class BookType {
     public void setBorrowdays(Integer borrowdays) {
         this.borrowdays = borrowdays;
     }
+
 }

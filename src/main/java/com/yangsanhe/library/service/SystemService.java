@@ -1,8 +1,13 @@
 package com.yangsanhe.library.service;
 
+import com.yangsanhe.library.entity.Admin;
+import com.yangsanhe.library.entity.Bookshelf;
 import com.yangsanhe.library.entity.Library;
 import com.yangsanhe.library.error.CustomException;
+import com.yangsanhe.library.vo.AdminTableVO;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @author yangsanhe
@@ -23,4 +28,17 @@ public interface SystemService {
      * @throws CustomException 自定义异常 {@link CustomException}
      */
     void updateLibraryInfo(Library library) throws CustomException;
+
+    void insertManager(Admin admin) throws CustomException;
+
+    List<AdminTableVO> queryManager() throws CustomException;
+
+    void insertBookshelf(Bookshelf bookshelf) throws CustomException;
+
+    void deleteBookshelf(Integer id) throws CustomException;
+
+    void editBookshelf(Bookshelf bookshelf) throws CustomException;
+
+    List<Bookshelf> queryBookShelf() throws CustomException;
+
 }

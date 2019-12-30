@@ -15,6 +15,11 @@
     from bookType
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="queryAllTypes" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from bookType
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from bookType
     where id = #{id,jdbcType=INTEGER}

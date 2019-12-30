@@ -17,7 +17,7 @@ public class Book {
 
     private BigDecimal price;
 
-    private Integer pagenmuber;
+    private Integer pagenumber;
 
     private Integer bookshelf;
 
@@ -81,12 +81,12 @@ public class Book {
         this.price = price;
     }
 
-    public Integer getPagenmuber() {
-        return pagenmuber;
+    public Integer getPagenumber() {
+        return pagenumber;
     }
 
-    public void setPagenmuber(Integer pagenmuber) {
-        this.pagenmuber = pagenmuber;
+    public void setPagenumber(Integer pagenumber) {
+        this.pagenumber = pagenumber;
     }
 
     public Integer getBookshelf() {

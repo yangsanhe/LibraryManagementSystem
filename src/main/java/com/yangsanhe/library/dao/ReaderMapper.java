@@ -4,6 +4,8 @@ import com.yangsanhe.library.entity.Reader;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Mapper
 @Repository
 public interface ReaderMapper {
@@ -12,6 +14,8 @@ public interface ReaderMapper {
     int insert(Reader record);
 
     int insertSelective(Reader record);
+
+    List<Reader> queryAllreaders();
 
     Reader selectByPrimaryKey(String readerbarcode);
 

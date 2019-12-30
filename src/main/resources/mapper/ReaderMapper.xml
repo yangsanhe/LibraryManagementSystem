@@ -26,6 +26,11 @@
     from reader
     where readerbarcode = #{readerbarcode,jdbcType=VARCHAR}
   </select>
+  <select id="queryAllReaders" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from reader
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from reader
     where readerbarcode = #{readerbarcode,jdbcType=VARCHAR}

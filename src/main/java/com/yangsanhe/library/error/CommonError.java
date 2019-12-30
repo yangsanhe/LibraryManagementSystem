@@ -22,9 +22,14 @@ public enum CommonError implements ResultCode {
      */
     UNKNOWN_ERROR(false,19999,"未知异常"),
     /**
+     * 20001 登陆失败
+     */
+    LOGIN_FAILED(false,20001,"用户名或密码输入错误"),
+    /**
      * 99999 服务器繁忙
      */
     BUSY_SERVER(false,99999,"系统繁忙，请稍后再试");
+    //异常类型可以在这里继续定义无限个
 
     /**
      * 操作是否成功

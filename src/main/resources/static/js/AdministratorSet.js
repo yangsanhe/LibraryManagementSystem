@@ -3,17 +3,17 @@ layui.use('table', function() {
     var table = layui.table;
     table.render({
         elem: '#test'
-        , url: '#'
+        , url: 'system/getAllManager'
         , toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
         , title: '管理员权限表'
         , cols: [[
-             {field: 'adminName', title: '管理员名称', align: 'center', unresize: true}
-            , {field: 'systemSet', title: '系统设置', align: 'center', unresize: true}
-            , {field: 'readersManage', title: '读者管理', align: 'center', unresize: true}
-            , {field: 'booksManage', title: '图书管理', align: 'center', unresize: true}
-            , {field: 'borrowingBooks', title: '图书借还', align: 'center', unresize: true}
-            , {field: 'systemQuery', title: '系统查询', align: 'center', unresize: true}
-            , {fixed: 'right', title: '操作', toolbar: '#barDemo', align: 'center', unresize: true}
+             {field: 'adminname', title: '管理员名称', align: 'center', unresize: true}
+            , {field: 'systemset', title: '系统设置', align: 'center', unresize: true}
+            , {field: 'readersmanage', title: '读者管理', align: 'center', unresize: true}
+            , {field: 'vbooksmanage', title: '图书管理', align: 'center', unresize: true}
+            , {field: 'borrowingbooks', title: '图书借还', align: 'center', unresize: true}
+            , {field: 'systemquery', title: '系统查询', align: 'center', unresize: true}
+            , {title: '操作', toolbar: '#barDemo', align: 'center', unresize: true}
         ]]
         , page: true
     });

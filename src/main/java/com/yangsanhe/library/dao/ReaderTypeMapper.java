@@ -4,6 +4,8 @@ import com.yangsanhe.library.entity.ReaderType;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Mapper
 @Repository
 public interface ReaderTypeMapper {
@@ -14,6 +16,8 @@ public interface ReaderTypeMapper {
     int insertSelective(ReaderType record);
 
     ReaderType selectByPrimaryKey(Integer id);
+
+    List<ReaderType> queryAllTypes();
 
     int updateByPrimaryKeySelective(ReaderType record);
 

@@ -10,7 +10,7 @@
 <div class='panel-1' id='readerCheck'>
     <div class="layui-fluid">
         <div class="layui-card">
-            <div class="layui-form layui-card-header layuiadmin-card-header-auto" style="height: auto;">
+            <div class="layui-form">
                 <div class="layui-form-item">
                     <div class="layui-inline">
                         <label class="layui-form-label">读者条形码:</label>
@@ -19,50 +19,50 @@
                                    class="layui-input" id="barcode">
                         </div>
                     </div>
-
                     <div class="layui-inline">
-                        <button class="layui-btn layuiadmin-btn-useradmin" lay-submit=""
-                                lay-filter="LAY-user-front-search" data-type="reload" id="searchreaderbtn">
+                        <button class="layui-btn" lay-submit lay-filter="LAY-user-front-search" id="searchreaderbtn">
                             <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
                         </button>
                     </div>
                 </div>
             </div>
-            <div class="layui-form layui-card-header layuiadmin-card-header-auto" style="height: auto;">
+            <div class="layui-form">
                 <div class="layui-form-item">
-                    <label class="layui-form-label">姓名：</label>
-                    <div class="layui-input-inline">
-                        <input type="text" name="readerName"id="readerName" required  lay-verify="required" placeholder="请输入读者姓名" autocomplete="off" class="layui-input">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">姓名:</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="readerName"id="readerName" required  lay-verify="required" placeholder="请输入读者姓名" autocomplete="off" class="layui-input">
+                        </div>
                     </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">性别：</label>
-                    <div class="layui-input-inline">
-                        <input type="text" name="sex" id="sex" autocomplete="off" class="layui-input">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">性别:</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="sex" id="sex" autocomplete="off" class="layui-input">
+                        </div>
                     </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">读者类型：</label>
-                    <div class="layui-input-inline">
-                        <input type="text" name="readerType" id="readerType" autocomplete="off" class="layui-input">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">读者类型:</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="readerType" id="readerType" autocomplete="off" class="layui-input">
+                        </div>
                     </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">有效证件：</label>
-                    <div class="layui-input-inline">
-                        <input type="text" name="IDType" id="IDType" autocomplete="off" class="layui-input">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">有效证件:</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="IDType" id="IDType" autocomplete="off" class="layui-input">
+                        </div>
                     </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">证件号码：</label>
-                    <div class="layui-input-inline">
-                        <input type="text" name="IDNumber" id="IDNumber"  lay-verify="required" autocomplete="off" class="layui-input">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">证件号码:</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="IDNumber" id="IDNumber"  lay-verify="required" autocomplete="off" class="layui-input">
+                        </div>
                     </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">可借数量：</label>
-                    <div class="layui-input-inline">
-                        <input type="text" name="borrownumber" id="borrownumber"  lay-verify="required" autocomplete="off" class="layui-input">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">可借数量:</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="borrownumber" id="borrownumber"  lay-verify="required" autocomplete="off" class="layui-input">
+                        </div>
                     </div>
                 </div>
             </div>

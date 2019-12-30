@@ -3,18 +3,18 @@ layui.use('table', function() {
     var table = layui.table;
     table.render({
         elem: '#test'
-        , url: '#'
+        , url: 'book/getAllBooks'
         , toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
         , title: '读者信息表'
         , cols: [[
-            {field: 'barcode', title: '条形码', align: 'center', unresize: true}
-            , {field: 'bookName', title: '图书名称', align: 'center', unresize: true}
-            , {field: 'bookType', title: '图书类型', align: 'center', unresize: true}
+            {field: 'bookbarcode', title: '条形码', align: 'center', unresize: true}
+            , {field: 'bookname', title: '图书名称', align: 'center', unresize: true}
+            , {field: 'booktype', title: '图书类型', align: 'center', unresize: true}
             , {field: 'author', title: '作者', align: 'center', unresize: true}
             , {field: 'translator', title: '译者', align: 'center', unresize: true}
             , {field: 'press', title: '出版者', align: 'center', unresize: true}
             , {field: 'price', title: '价格', align: 'center', unresize: true}
-            , {field: 'pageNumber', title: '页码', align: 'center', unresize: true}
+            , {field: 'pagenumber', title: '页码', align: 'center', unresize: true}
             , {field: 'bookshelf', title: '书架', align: 'center', unresize: true}
             , {fixed: 'right', title: '操作', toolbar: '#barDemo', align: 'center', unresize: true}
         ]]
@@ -37,16 +37,18 @@ layui.use('table', function() {
             maxmin: true,
             content: 'addBook',
             yes: function (index, layero) {
+                var body = layer.getChildFrame('body', index);
+                console.log(body.find("#add-book-form").serialize());
                 $.ajax({
                     type: "POST",
-                    url: "#",
-                    data: $("#add-book-form").serialize(),
+                    url: "book/addBook",
+                    data: body.find("#add-book-form").serialize(),
                     success: function (res) {
-                        if (res === "fail") {
-                            layer.msg('添加失败，请重新输入', {icon: 6, time: 1500});
+                        if (res.success) {
+                            layer.msg('添加成功！', {icon: 6, time: 1500});
 
                         } else {
-                            layer.msg('添加成功', {icon: 6, time: 1500});
+                            layer.msg('添加失败', {icon: 6, time: 1500});
                         }
                     }
                 });
@@ -65,6 +67,21 @@ layui.use('table', function() {
             layer.confirm('真的删除行么', function (index) {
                 obj.del();
                 layer.close(index);
+                $.ajax({
+                    type: "POST",
+                    url: "book/deleteBookType",
+                    data:{
+                        bookbarcode : data.bookbarcode
+                    },
+                    success: function (res) {
+                        if (res.success) {
+                            layer.msg('删除成功！', {icon: 6, time: 1500});
+
+                        } else {
+                            layer.msg('删除失败', {icon: 6, time: 1500});
+                        }
+                    }
+                });
             });
         } else if (obj.event === 'edit') {
             layer.open({
@@ -81,12 +98,12 @@ layui.use('table', function() {
                 success: function (layero, index) {
                     var body = layer.getChildFrame('body',
                                 index);
-                    body.find("#barcode").val(
+                    body.find("#bookbarcode").val(
                         data.barcode);
-                    body.find("#bookName").val(
-                        data.bookName);
-                    body.find("#bookType").val(
-                        data.bookType);
+                    body.find("#bookname").val(
+                        data.bookname);
+                    body.find("#booktype").val(
+                        data.booktype);
                     body.find("#author").val(
                         data.author);
                     body.find("#translator").val(
@@ -95,8 +112,8 @@ layui.use('table', function() {
                         data.press);
                     body.find("#price").val(
                         data.price);
-                    body.find("#pageNumber").val(
-                        data.pageNumber);
+                    body.find("#pagenumber").val(
+                        data.pagenumber);
                     body.find("#bookshelf").val(
                         data.bookshelf);
                     layui.form.render();
@@ -104,12 +121,12 @@ layui.use('table', function() {
                 yes: function (index, layero) {
                     var body = layer.getChildFrame('body',
                         index);
-                    body.find("#edit-reader-form").submit();
+                    body.find("#edit-book-form").submit();
                     obj.update({
-                        bookName: body.find(
-                            "#bookName").val(),
-                        bookType: body.find(
-                            "#bookType").val(),
+                        bookname: body.find(
+                            "#bookname").val(),
+                        booktype: body.find(
+                            "#booktype").val(),
                         author: body.find(
                             "#author").val(),
                         translator: body.find(
@@ -118,8 +135,8 @@ layui.use('table', function() {
                             "#press").val(),
                         price: body.find(
                             "#price").val(),
-                        pageNumber: body.find(
-                            "#pageNumber").val(),
+                        pagenumber: body.find(
+                            "#pagenumber").val(),
                         bookshelf: body.find(
                             "#bookshelf").val(),
                     });

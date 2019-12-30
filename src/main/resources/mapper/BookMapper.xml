@@ -9,13 +9,13 @@
     <result column="translator" jdbcType="VARCHAR" property="translator" />
     <result column="press" jdbcType="VARCHAR" property="press" />
     <result column="price" jdbcType="DECIMAL" property="price" />
-    <result column="pageNmuber" jdbcType="INTEGER" property="pagenmuber" />
+    <result column="pageNumber" jdbcType="INTEGER" property="pagenumber" />
     <result column="bookshelf" jdbcType="INTEGER" property="bookshelf" />
     <result column="ifexit" jdbcType="INTEGER" property="ifexit" />
     <result column="borrowtimes" jdbcType="VARCHAR" property="borrowtimes" />
   </resultMap>
   <sql id="Base_Column_List">
-    bookbarcode, bookName, bookType, author, translator, press, price, pageNmuber, bookshelf, 
+    bookbarcode, bookName, bookType, author, translator, press, price, pageNumber, bookshelf,
     ifexit, borrowtimes
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
@@ -24,6 +24,11 @@
     from book
     where bookbarcode = #{bookbarcode,jdbcType=VARCHAR}
   </select>
+  <select id="queryAllBooks" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from book
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from book
     where bookbarcode = #{bookbarcode,jdbcType=VARCHAR}
@@ -31,11 +36,11 @@
   <insert id="insert" parameterType="com.yangsanhe.library.entity.Book">
     insert into book (bookbarcode, bookName, bookType, 
       author, translator, press, 
-      price, pageNmuber, bookshelf, 
+      price, pageNumber, bookshelf,
       ifexit, borrowtimes)
     values (#{bookbarcode,jdbcType=VARCHAR}, #{bookname,jdbcType=VARCHAR}, #{booktype,jdbcType=INTEGER}, 
       #{author,jdbcType=VARCHAR}, #{translator,jdbcType=VARCHAR}, #{press,jdbcType=VARCHAR}, 
-      #{price,jdbcType=DECIMAL}, #{pagenmuber,jdbcType=INTEGER}, #{bookshelf,jdbcType=INTEGER}, 
+      #{price,jdbcType=DECIMAL}, #{pagenumber,jdbcType=INTEGER}, #{bookshelf,jdbcType=INTEGER},
       #{ifexit,jdbcType=INTEGER}, #{borrowtimes,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.yangsanhe.library.entity.Book">
@@ -63,7 +68,7 @@
         price,
       </if>
       <if test="pagenmuber != null">
-        pageNmuber,
+        pageNumber,
       </if>
       <if test="bookshelf != null">
         bookshelf,
@@ -98,7 +103,7 @@
         #{price,jdbcType=DECIMAL},
       </if>
       <if test="pagenmuber != null">
-        #{pagenmuber,jdbcType=INTEGER},
+        #{pagenumber,jdbcType=INTEGER},
       </if>
       <if test="bookshelf != null">
         #{bookshelf,jdbcType=INTEGER},
@@ -133,7 +138,7 @@
         price = #{price,jdbcType=DECIMAL},
       </if>
       <if test="pagenmuber != null">
-        pageNmuber = #{pagenmuber,jdbcType=INTEGER},
+        pageNumber = #{pagenumber,jdbcType=INTEGER},
       </if>
       <if test="bookshelf != null">
         bookshelf = #{bookshelf,jdbcType=INTEGER},
@@ -155,7 +160,7 @@
       translator = #{translator,jdbcType=VARCHAR},
       press = #{press,jdbcType=VARCHAR},
       price = #{price,jdbcType=DECIMAL},
-      pageNmuber = #{pagenmuber,jdbcType=INTEGER},
+      pageNumber = #{pagenumber,jdbcType=INTEGER},
       bookshelf = #{bookshelf,jdbcType=INTEGER},
       ifexit = #{ifexit,jdbcType=INTEGER},
       borrowtimes = #{borrowtimes,jdbcType=VARCHAR}

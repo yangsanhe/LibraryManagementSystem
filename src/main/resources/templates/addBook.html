@@ -6,11 +6,11 @@
     <link rel="stylesheet" href="./layui/css/layui.css">
 </head>
 <body>
-<form class="layui-form" action="" id="add-book-form">
+<form class="layui-form" action="#" id="add-book-form">
     <div class="layui-form-item">
         <label class="layui-form-label">条形码：</label>
         <div class="layui-input-inline">
-            <input type="text" name="barcode" id="barcode" required lay-verify="required" placeholder="请生成条形码" autocomplete="off" class="layui-input">
+            <input type="text" name="bookbarcode" id="bookbarcode" required lay-verify="required" placeholder="请生成条形码" autocomplete="off" class="layui-input">
         </div>
         <div class="layui-form-mid layui-word-aux">
             <button class="layui-btn layui-btn-sm" id="produceBarcode">自动生成条形码</button>
@@ -20,14 +20,14 @@
     <div class="layui-form-item">
         <label class="layui-form-label">图书名称：</label>
         <div class="layui-input-inline">
-            <input type="text" name="bookName"id="bookName" required  lay-verify="required" placeholder="请输入图书名称" autocomplete="off" class="layui-input">
+            <input type="text" name="bookname"id="bookname" required  lay-verify="required" placeholder="请输入图书名称" autocomplete="off" class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item" lay-filter="bookType">
         <label class="layui-form-label">图书类型：</label>
         <div class="layui-input-inline">
-            <select name="bookType" lay-verify="required" id="bookType">
+            <select name="booktype" lay-verify="required" id="booktype">
                 <option value=""></option>
             </select>
         </div>
@@ -51,10 +51,10 @@
         <div class="layui-input-inline">
             <select name="press" lay-verify="required" id="press">
                 <option value=""></option>
-                <option value="0">机械工业出版社</option>
-                <option value="1">清华大学出版社</option>
-                <option value="2">人民邮电出版社</option>
-                <option value="3">同济大学出版社</option>
+                <option value="机械工业出版社">机械工业出版社</option>
+                <option value="清华大学出版社">清华大学出版社</option>
+                <option value="人民邮电出版社">人民邮电出版社</option>
+                <option value="同济大学出版社">同济大学出版社</option>
             </select>
         </div>
     </div>
@@ -68,7 +68,7 @@
     <div class="layui-form-item">
         <label class="layui-form-label">页码：</label>
         <div class="layui-input-inline">
-            <input type="text" name="pageNumber" id="pageNumber" placeholder="请输入页码" autocomplete="off" class="layui-input">
+            <input type="text" name="pagenumber" id="pagenumber" placeholder="请输入页码" autocomplete="off" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item" lay-filter="bookshelf">
@@ -88,7 +88,7 @@
         //渲染读者类型
         var bookTypes = ["网络编程","休闲娱乐","文学历史"];
         for (var i=0;i<bookTypes.length;i++){
-            $("#bookType").append('<option value="'+i+'">'+bookTypes[i]+'</option>');
+            $("#booktype").append('<option value="'+i+'">'+bookTypes[i]+'</option>');
         }
 
         var bookshelfs = ["左A-1","左A-2","右-A-1"];
