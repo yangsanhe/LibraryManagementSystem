@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface RecordMapper {
     int deleteByPrimaryKey(RecordKey key);
-
     int insert(Record record);
 
     int insertSelective(Record record);
