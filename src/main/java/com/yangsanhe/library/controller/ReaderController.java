@@ -7,6 +7,7 @@ import com.yangsanhe.library.response.Response;
 import com.yangsanhe.library.service.ReaderService;
 import com.yangsanhe.library.vo.ReaderTableVO;
 import com.yangsanhe.library.vo.ResponseTableVO;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +21,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/reader")
+@RequiresPermissions("读者管理")
 public class ReaderController {
     private final ReaderService readerService;
 

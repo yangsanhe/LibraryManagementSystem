@@ -11,6 +11,7 @@ import com.yangsanhe.library.entity.Purview;
 import com.yangsanhe.library.error.CommonError;
 import com.yangsanhe.library.error.CustomException;
 import com.yangsanhe.library.service.SystemService;
+import com.yangsanhe.library.util.LoggerUtil;
 import com.yangsanhe.library.vo.AdminTableVO;
 import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,9 @@ import org.springframework.stereotype.Service;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author yangsanhe
@@ -26,14 +29,13 @@ import java.util.List;
  */
 @Service
 public class SystemServiceImpl implements SystemService {
-
     private final LibraryMapper libraryMapper;
-
     private final AdminMapper adminMapper;
-
     private final PurviewMapper purviewMapper;
-
     private final BookshelfMapper bookshelfMapper;
+    private final String[] auth = new String[]{
+            "系统管理","读者管理","图书管理","借还管理","系统查询"
+    };
 
     @Autowired
     public SystemServiceImpl(LibraryMapper libraryMapper, AdminMapper adminMapper, PurviewMapper purviewMapper, BookshelfMapper bookshelfMapper) {
@@ -77,6 +79,34 @@ public class SystemServiceImpl implements SystemService {
             adminTableVOS.add(this.managerConverter(admin,purview));
         }
         return adminTableVOS;
+    }
+
+    @Override
+    public String getPasswordByAdminName(String username) throws CustomException {
+        return adminMapper.getPasswordByUsername(username);
+    }
+
+    @Override
+    public Set<String> getAuthByAdminName(String username) throws CustomException {
+        Set<String> authSet = new HashSet<>();
+        Admin admin = adminMapper.getAuthByUsername(username);
+        Purview purview = admin.getPurview();
+        if(purview.getSystemset() == 1){
+            authSet.add(auth[0]);
+        }
+        if(purview.getReadersmanage() == 1){
+            authSet.add(auth[1]);
+        }
+        if(purview.getVbooksmanage() == 1){
+            authSet.add(auth[2]);
+        }
+        if(purview.getBorrowingbooks() == 1){
+            authSet.add(auth[3]);
+        }
+        if(purview.getSystemquery() == 1){
+            authSet.add(auth[4]);
+        }
+        return authSet;
     }
 
     @Override

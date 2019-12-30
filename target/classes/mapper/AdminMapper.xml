@@ -6,6 +6,19 @@
     <result column="adminName" jdbcType="VARCHAR" property="adminname" />
     <result column="password" jdbcType="VARCHAR" property="password" />
   </resultMap>
+  <resultMap id="AuthResultMap" type="com.yangsanhe.library.entity.Admin">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="adminName" jdbcType="VARCHAR" property="adminname" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <association property="purview" javaType="com.yangsanhe.library.entity.Purview">
+      <id property="id" column="id" jdbcType="INTEGER" />
+      <result property="systemset" column="systemSet" jdbcType="INTEGER" />
+      <result property="readersmanage" column="readersManage" jdbcType="INTEGER" />
+      <result property="vbooksmanage" column="vbooksManage" jdbcType="INTEGER" />
+      <result property="borrowingbooks" column="borrowingBooks" jdbcType="INTEGER" />
+      <result property="systemquery" column="systemQuery" jdbcType="INTEGER" />
+    </association>
+  </resultMap>
   <sql id="Base_Column_List">
     id, adminName, password
   </sql>
@@ -19,6 +32,16 @@
     select
     <include refid="Base_Column_List" />
     from admin
+  </select>
+  <select id="getPasswordByUsername" parameterType="java.lang.String" resultType="java.lang.String">
+    select password from admin
+    where adminName = #{username,jdbcType=VARCHAR}
+  </select>
+  <select id="getAuthByUsername" parameterType="java.lang.String" resultMap="AuthResultMap">
+    select a.id,a.adminName,p.systemSet,p.readersManage,p.vbooksManage,p.borrowingBooks,p.systemQuery
+    from
+    admin a inner join purview p on a.id = p.id
+    where a.adminName = #{username,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from admin

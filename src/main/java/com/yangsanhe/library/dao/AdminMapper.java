@@ -19,6 +19,10 @@ public interface AdminMapper {
 
     List<Admin> queryAllAdmin();
 
+    String getPasswordByUsername(String username);
+
+    Admin getAuthByUsername(String username);
+
     int updateByPrimaryKeySelective(Admin record);
 
     int updateByPrimaryKey(Admin record);

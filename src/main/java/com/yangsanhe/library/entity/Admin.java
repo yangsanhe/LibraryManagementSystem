@@ -7,6 +7,8 @@ public class Admin {
 
     private String password;
 
+    private Purview purview;
+
     public Integer getId() {
         return id;
     }
@@ -29,5 +31,13 @@ public class Admin {
 
     public void setPassword(String password) {
         this.password = password == null ? null : password.trim();
+    }
+
+    public Purview getPurview() {
+        return purview;
+    }
+
+    public void setPurview(Purview purview) {
+        this.purview = purview;
     }
 }

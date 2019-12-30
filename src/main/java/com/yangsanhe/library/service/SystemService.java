@@ -8,6 +8,7 @@ import com.yangsanhe.library.vo.AdminTableVO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author yangsanhe
@@ -32,6 +33,10 @@ public interface SystemService {
     void insertManager(Admin admin) throws CustomException;
 
     List<AdminTableVO> queryManager() throws CustomException;
+
+    String getPasswordByAdminName(String username) throws CustomException;
+
+    Set<String> getAuthByAdminName(String username) throws CustomException;
 
     void insertBookshelf(Bookshelf bookshelf) throws CustomException;
 

@@ -2,7 +2,6 @@ package com.yangsanhe.library.util;
 
 import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.util.ByteSource;
-import org.junit.Test;
 
 /**
  * @author yangsanhe
