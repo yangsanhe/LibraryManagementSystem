@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yangsanhe.library.dao.RecordMapper">
+  <resultMap id="BaseResultMap" type="com.yangsanhe.library.entity.Record">
+    <id column="bookbarcode" jdbcType="VARCHAR" property="bookbarcode" />
+    <id column="readerbarcode" jdbcType="VARCHAR" property="readerbarcode" />
+    <result column="borrowTime" jdbcType="TIMESTAMP" property="borrowtime" />
+    <result column="returnTime" jdbcType="TIMESTAMP" property="returntime" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    bookbarcode, readerbarcode, borrowTime, returnTime, state
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.yangsanhe.library.entity.RecordKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from record
+    where bookbarcode = #{bookbarcode,jdbcType=VARCHAR}
+      and readerbarcode = #{readerbarcode,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.yangsanhe.library.entity.RecordKey">
+    delete from record
+    where bookbarcode = #{bookbarcode,jdbcType=VARCHAR}
+      and readerbarcode = #{readerbarcode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.yangsanhe.library.entity.Record">
+    insert into record (bookbarcode, readerbarcode, borrowTime, 
+      returnTime, state)
+    values (#{bookbarcode,jdbcType=VARCHAR}, #{readerbarcode,jdbcType=VARCHAR}, #{borrowtime,jdbcType=TIMESTAMP}, 
+      #{returntime,jdbcType=TIMESTAMP}, #{state,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yangsanhe.library.entity.Record">
+    insert into record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="bookbarcode != null">
+        bookbarcode,
+      </if>
+      <if test="readerbarcode != null">
+        readerbarcode,
+      </if>
+      <if test="borrowtime != null">
+        borrowTime,
+      </if>
+      <if test="returntime != null">
+        returnTime,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="bookbarcode != null">
+        #{bookbarcode,jdbcType=VARCHAR},
+      </if>
+      <if test="readerbarcode != null">
+        #{readerbarcode,jdbcType=VARCHAR},
+      </if>
+      <if test="borrowtime != null">
+        #{borrowtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="returntime != null">
+        #{returntime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yangsanhe.library.entity.Record">
+    update record
+    <set>
+      <if test="borrowtime != null">
+        borrowTime = #{borrowtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="returntime != null">
+        returnTime = #{returntime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=INTEGER},
+      </if>
+    </set>
+    where bookbarcode = #{bookbarcode,jdbcType=VARCHAR}
+      and readerbarcode = #{readerbarcode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yangsanhe.library.entity.Record">
+    update record
+    set borrowTime = #{borrowtime,jdbcType=TIMESTAMP},
+      returnTime = #{returntime,jdbcType=TIMESTAMP},
+      state = #{state,jdbcType=INTEGER}
+    where bookbarcode = #{bookbarcode,jdbcType=VARCHAR}
+      and readerbarcode = #{readerbarcode,jdbcType=VARCHAR}
+  </update>
+</mapper>

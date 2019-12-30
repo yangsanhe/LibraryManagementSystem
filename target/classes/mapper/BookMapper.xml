@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yangsanhe.library.dao.BookMapper">
+  <resultMap id="BaseResultMap" type="com.yangsanhe.library.entity.Book">
+    <id column="bookbarcode" jdbcType="VARCHAR" property="bookbarcode" />
+    <result column="bookName" jdbcType="VARCHAR" property="bookname" />
+    <result column="bookType" jdbcType="INTEGER" property="booktype" />
+    <result column="author" jdbcType="VARCHAR" property="author" />
+    <result column="translator" jdbcType="VARCHAR" property="translator" />
+    <result column="press" jdbcType="VARCHAR" property="press" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="pageNumber" jdbcType="INTEGER" property="pagenumber" />
+    <result column="bookshelf" jdbcType="INTEGER" property="bookshelf" />
+    <result column="ifexit" jdbcType="INTEGER" property="ifexit" />
+    <result column="borrowtimes" jdbcType="VARCHAR" property="borrowtimes" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    bookbarcode, bookName, bookType, author, translator, press, price, pageNumber, bookshelf,
+    ifexit, borrowtimes
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from book
+    where bookbarcode = #{bookbarcode,jdbcType=VARCHAR}
+  </select>
+  <select id="queryAllBooks" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from book
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from book
+    where bookbarcode = #{bookbarcode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.yangsanhe.library.entity.Book">
+    insert into book (bookbarcode, bookName, bookType, 
+      author, translator, press, 
+      price, pageNumber, bookshelf,
+      ifexit, borrowtimes)
+    values (#{bookbarcode,jdbcType=VARCHAR}, #{bookname,jdbcType=VARCHAR}, #{booktype,jdbcType=INTEGER}, 
+      #{author,jdbcType=VARCHAR}, #{translator,jdbcType=VARCHAR}, #{press,jdbcType=VARCHAR}, 
+      #{price,jdbcType=DECIMAL}, #{pagenumber,jdbcType=INTEGER}, #{bookshelf,jdbcType=INTEGER},
+      #{ifexit,jdbcType=INTEGER}, #{borrowtimes,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yangsanhe.library.entity.Book">
+    insert into book
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="bookbarcode != null">
+        bookbarcode,
+      </if>
+      <if test="bookname != null">
+        bookName,
+      </if>
+      <if test="booktype != null">
+        bookType,
+      </if>
+      <if test="author != null">
+        author,
+      </if>
+      <if test="translator != null">
+        translator,
+      </if>
+      <if test="press != null">
+        press,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="pagenmuber != null">
+        pageNumber,
+      </if>
+      <if test="bookshelf != null">
+        bookshelf,
+      </if>
+      <if test="ifexit != null">
+        ifexit,
+      </if>
+      <if test="borrowtimes != null">
+        borrowtimes,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="bookbarcode != null">
+        #{bookbarcode,jdbcType=VARCHAR},
+      </if>
+      <if test="bookname != null">
+        #{bookname,jdbcType=VARCHAR},
+      </if>
+      <if test="booktype != null">
+        #{booktype,jdbcType=INTEGER},
+      </if>
+      <if test="author != null">
+        #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="translator != null">
+        #{translator,jdbcType=VARCHAR},
+      </if>
+      <if test="press != null">
+        #{press,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="pagenmuber != null">
+        #{pagenumber,jdbcType=INTEGER},
+      </if>
+      <if test="bookshelf != null">
+        #{bookshelf,jdbcType=INTEGER},
+      </if>
+      <if test="ifexit != null">
+        #{ifexit,jdbcType=INTEGER},
+      </if>
+      <if test="borrowtimes != null">
+        #{borrowtimes,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yangsanhe.library.entity.Book">
+    update book
+    <set>
+      <if test="bookname != null">
+        bookName = #{bookname,jdbcType=VARCHAR},
+      </if>
+      <if test="booktype != null">
+        bookType = #{booktype,jdbcType=INTEGER},
+      </if>
+      <if test="author != null">
+        author = #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="translator != null">
+        translator = #{translator,jdbcType=VARCHAR},
+      </if>
+      <if test="press != null">
+        press = #{press,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="pagenmuber != null">
+        pageNumber = #{pagenumber,jdbcType=INTEGER},
+      </if>
+      <if test="bookshelf != null">
+        bookshelf = #{bookshelf,jdbcType=INTEGER},
+      </if>
+      <if test="ifexit != null">
+        ifexit = #{ifexit,jdbcType=INTEGER},
+      </if>
+      <if test="borrowtimes != null">
+        borrowtimes = #{borrowtimes,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where bookbarcode = #{bookbarcode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yangsanhe.library.entity.Book">
+    update book
+    set bookName = #{bookname,jdbcType=VARCHAR},
+      bookType = #{booktype,jdbcType=INTEGER},
+      author = #{author,jdbcType=VARCHAR},
+      translator = #{translator,jdbcType=VARCHAR},
+      press = #{press,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DECIMAL},
+      pageNumber = #{pagenumber,jdbcType=INTEGER},
+      bookshelf = #{bookshelf,jdbcType=INTEGER},
+      ifexit = #{ifexit,jdbcType=INTEGER},
+      borrowtimes = #{borrowtimes,jdbcType=VARCHAR}
+    where bookbarcode = #{bookbarcode,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yangsanhe.library.dao.LibraryMapper">
+  <resultMap id="BaseResultMap" type="com.yangsanhe.library.entity.Library">
+    <id column="lirary_id" jdbcType="INTEGER" property="liraryId" />
+    <result column="libraryName" jdbcType="VARCHAR" property="libraryname" />
+    <result column="curator" jdbcType="VARCHAR" property="curator" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="mailbox" jdbcType="VARCHAR" property="mailbox" />
+    <result column="website" jdbcType="VARCHAR" property="website" />
+    <result column="buildingTime" jdbcType="VARCHAR" property="buildingtime" />
+    <result column="briefIntroduction" jdbcType="VARCHAR" property="briefintroduction" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    lirary_id, libraryName, curator, phone, address, mailbox, website, buildingTime, 
+    briefIntroduction
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from library
+    where lirary_id = #{liraryId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from library
+    where lirary_id = #{liraryId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yangsanhe.library.entity.Library">
+    insert into library (lirary_id, libraryName, curator, 
+      phone, address, mailbox, 
+      website, buildingTime, briefIntroduction
+      )
+    values (#{liraryId,jdbcType=INTEGER}, #{libraryname,jdbcType=VARCHAR}, #{curator,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{mailbox,jdbcType=VARCHAR}, 
+      #{website,jdbcType=VARCHAR}, #{buildingtime,jdbcType=VARCHAR}, #{briefintroduction,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yangsanhe.library.entity.Library">
+    insert into library
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="liraryId != null">
+        lirary_id,
+      </if>
+      <if test="libraryname != null">
+        libraryName,
+      </if>
+      <if test="curator != null">
+        curator,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="mailbox != null">
+        mailbox,
+      </if>
+      <if test="website != null">
+        website,
+      </if>
+      <if test="buildingtime != null">
+        buildingTime,
+      </if>
+      <if test="briefintroduction != null">
+        briefIntroduction,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="liraryId != null">
+        #{liraryId,jdbcType=INTEGER},
+      </if>
+      <if test="libraryname != null">
+        #{libraryname,jdbcType=VARCHAR},
+      </if>
+      <if test="curator != null">
+        #{curator,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="mailbox != null">
+        #{mailbox,jdbcType=VARCHAR},
+      </if>
+      <if test="website != null">
+        #{website,jdbcType=VARCHAR},
+      </if>
+      <if test="buildingtime != null">
+        #{buildingtime,jdbcType=VARCHAR},
+      </if>
+      <if test="briefintroduction != null">
+        #{briefintroduction,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yangsanhe.library.entity.Library">
+    update library
+    <set>
+      <if test="libraryname != null">
+        libraryName = #{libraryname,jdbcType=VARCHAR},
+      </if>
+      <if test="curator != null">
+        curator = #{curator,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="mailbox != null">
+        mailbox = #{mailbox,jdbcType=VARCHAR},
+      </if>
+      <if test="website != null">
+        website = #{website,jdbcType=VARCHAR},
+      </if>
+      <if test="buildingtime != null">
+        buildingTime = #{buildingtime,jdbcType=VARCHAR},
+      </if>
+      <if test="briefintroduction != null">
+        briefIntroduction = #{briefintroduction,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where lirary_id = #{liraryId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yangsanhe.library.entity.Library">
+    update library
+    set libraryName = #{libraryname,jdbcType=VARCHAR},
+      curator = #{curator,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      mailbox = #{mailbox,jdbcType=VARCHAR},
+      website = #{website,jdbcType=VARCHAR},
+      buildingTime = #{buildingtime,jdbcType=VARCHAR},
+      briefIntroduction = #{briefintroduction,jdbcType=VARCHAR}
+    where lirary_id = #{liraryId,jdbcType=INTEGER}
+  </update>
+</mapper>

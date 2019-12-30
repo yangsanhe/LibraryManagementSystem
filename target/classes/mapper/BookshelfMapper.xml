@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yangsanhe.library.dao.BookshelfMapper">
+  <resultMap id="BaseResultMap" type="com.yangsanhe.library.entity.Bookshelf">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="bookshelfName" jdbcType="VARCHAR" property="bookshelfname" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, bookshelfName
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from bookshelf
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="queryAllbookshelves" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from bookshelf
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from bookshelf
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yangsanhe.library.entity.Bookshelf">
+    insert into bookshelf (id, bookshelfName)
+    values (#{id,jdbcType=INTEGER}, #{bookshelfname,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yangsanhe.library.entity.Bookshelf">
+    insert into bookshelf
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="bookshelfname != null">
+        bookshelfName,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="bookshelfname != null">
+        #{bookshelfname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yangsanhe.library.entity.Bookshelf">
+    update bookshelf
+    <set>
+      <if test="bookshelfname != null">
+        bookshelfName = #{bookshelfname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yangsanhe.library.entity.Bookshelf">
+    update bookshelf
+    set bookshelfName = #{bookshelfname,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
